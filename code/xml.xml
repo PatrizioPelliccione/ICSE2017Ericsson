@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<signal name="CountersRcfm" osename="COUNTERS_RCFM" size="12">
+        <element name="sigNo" size="4" stereotype="signal_number" />
+</signal>

@@ -1,0 +1,101 @@
+\section{Related Work}\label{sec:relatedWorks}
+%This section describes the background of this thesis and some previous related work that aimed to provide fault injection approaches as well as implementations of fault injection tools.
+
+\subsection{Fault injection}
+
+%A software system does not always behave as it is expected. The more distributed system grows the more it suffers from different dependability issues for instance in embedded flight software, the presence of faults affects its dependability and can even have a big impact on the entire mission. Fault avoidance, fault removal and fault tolerance techniques are used for achieving high dependability. For preventing and minimizing the faults, faults removal and tolerance should be adapted in all software development stages staring from the design and implementation and ending with the verification and validation\cite{criticalsys_dep}. Dependability is an important issue especially when the software is critical safety system, faults can propagate and have a  consequent impact on the rest of the components. Furthermore service availability is also a very important aspect nowadays especially when the society becomes more Internet society \cite{availability}. Fault injection has been widely used in order to verify and validate the dependability and the availability of the software system. 
+
+%Fault injection techniques are mainly used late on the development cycle after the software has been developed; there are some limitations when utilizing the fault injection in an early stage presented in \cite{rana2013improving}. To come over those limitations fault injection shall be combine with other testing like mutation testing for adapting it in an early stage of the development process \cite{rana2013improving}. 
+
+There are two types of fault injection: hardware and software fault injection~\cite{rana2013improving}. 
+%\newline
+In hardware fault injection  faults are injected at the physical level by controlling the parameters of the environment variables. In this case fault types can be like disturbing the power supply, voltage sags, heavy ion radiation and electromagnetic interference etc.~\cite{rana2013improving}. 
+%\newline
+In software fault injection a possible strategy to inject faults is to consider %this can be done by implementing 
+different fault types such as register and memory faults, system overload, and missing, delayed and faulty  messages. Faults can be injected within the application, between the target and operating system or between the critical components in the system. 
+Software fault injection techniques can be classified into two groups based on when and where the faults are injected: %the first one is 
+compile-time and run-time faults. 
+Faults can be triggered with different mechanisms, for instance time-out, exception, code modification, and sending different random messages~\cite{rana2013improving}.   
+
+%\subsubsection{Failure Scenario as a Service (FSaaS)}
+
+%A research of fault injection is described in 
+The work in~\cite{FaaS} presents a new model called Failure Scenario as a Service (FSaaS). The main purpose of this model is to test the resilience of the cloud application. This can be done by monitoring the result of generating different failure scenarios on the cloud. Their main research focus is to investigate the impact of the failure on the jobs running in Hadoop for analyzing the MapReduce jobs. Hadoop is an open source software framework %written in the Java language. The main purpose of Hadoop is 
+to process large distributed data set on huge computer clusters~\cite{hadoop}. MapReduce is an efficient model for processing and generating large data set that is running on the distributed system on computer clusters~\cite{mapreduce}.    
+%\newline
+A fault injection tool called AnarchyApe~\cite{AnarchyApe} was used to inject faults into Hadoop clusters. In order to evaluate the effects of individual fault and combination of faults, some sample fault scenarios and different types of workloads were performed on different types of Hadoop jobs. As a result of their study, they discovered that the resulting behavior of the distributed system depends much on the fault types, combination of faults, job types, and the time when the faults are injected. %Furthermore, with traditional testing, it is very hard to test the reliability of running services on the cloud. In large system, the number of faults that can happen are relatively large and therefore it is hard to test large scale system. 
+The study presents a new model that can deal with large cloud applications to be tested efficiently. 
+The model had helped them to identify the week spots of the system and trying to fix them as well as monitor the resources for efficient utilization.
+%\newline
+The limitation of the model is that it can be only used by cloud service providers and clients who rely on Hadoop. However, their goal is to develop a system that can be applicable to general cloud scenarios \cite{FaaS}. In this paper we aim at developing a fault injection approach and tool that can be applied to small embedded distributed systems. %Since embedded distributed systems are an essential part of most nowadays application, having an efficient tool for evaluating their robustness will be very beneficial and valuable.
+ 
+%\subsubsection{Fault Injection and Mutation Testing with Model Based Development}
+%
+%A research of Increasing Efficiency of Verification and Validation by Combining Fault Injection and Mutation Testing with Model Based Development is presented in \cite{combinationtesting}. The main focus of this research is to proof that testing effectiveness and efficiency will be improved by applying fault injection techniques combined with a mutation testing approach for verifying and validating the automotive software at the model level. The main improvements of such testing is to detect the faults early in the development cycle thus providing enough time to be aware of the defects as well as less cost to fix them. 
+%%\newline
+%
+%ISO 26262 standard stated the requirements for using the fault injection techniques. The study presented in \cite{combinationtesting}, describes that those requirements are challenging due to the fact that they are related to complete functionality rather that components of sub-component of the software. Considering that the fault injection techniques are used in the automotive at one electric component (ECU) or one software system, and seldom at the function level. Therefore, utilizing fault injection technique is not enough since fault injection techniques are used late in the development (when ECUs are being developed), and any detection of faults at this stage will be difficult and costly. 
+%%\newline
+%
+%In the same study \cite{combinationtesting}, their research proposes a solution that the detection should be done at the model level when the ECUs functionality is still under design, in this case fault handling will be easy and cheap to resolve. Fault injection techniques are successfully used to detect the fault and identify the dependability problem of hardware and software when applied to complete system \cite{hsueh}. In order to increase the effectiveness of fault injection techniques and identify whether the fault should be injected at the model, software or ECU level, mutation testing should be utilized in order to verify the adequacy of the test cases. The combination of those approaches will improve the fault detection on an early design stage. A roadmap has been provided and described in \cite{combinationtesting}. The roadmap shows how a combination of fault injection and mutation testing approaches can be applied to modelling of automotive software for avoiding cost effects as well as increase the safety of modern and future cars. 
+%%\newline
+%
+%The software development in the automotive industry and other similar industries widely adapted the paradigm of Model-Based Development (MBD) and the functionalities are safety critical functionality. MBD provides a significant functional testing in an early stage of the development process. Combination of fault injection and mutation testing approaches can be adapted to effectively verify and validate the functionality of the system. By detecting faults earlier, ability to perform much of verification and validation of the needed functionality and robustness the quality of the software will be exponentially improved. On the other hand, from this thesis we ensure that the cost for fixing the faults will be decreased when detecting faults in an early stage of the development cycle described in the discussion section "Quality of findings".    	
+
+\subsection{Online Testing}
+Because of the inherent complexity of modern systems, testing cannot be confined during development and offline phases but needs to be extended also to online phases. %, thus moving testing software engineers to users. 
+%In fact, as one key method of ensuring quality of system, testing is needed during the whole life cycle of system. When software is delivered, testing is transferred from software engineers to users. Some people even think each using of system is one testing to the system [3]. In recent years, service has been thought as the goal of software. ?Software as service? is becoming one important common sense. And focuses on QoS (quality of services) are strengthened. As a result, focuses on online testing emerged and flourish in many areas[4], [5], [6], [7].
+Several online testing approaches have been proposed in many areas, like service choreographies~\cite{Ali2014,Bertolino2012} ~\cite{Seaman2008,Binder1994,Wang2002,Canini2011}. %\pat{extend}
+
+
+\subsubsection{Chaos Monkey Testing}
+
+Chaos Monkey Testing (CMT)~\cite{FaaS} has been developed when Netflix moved their data center to Amazon Web Services (AWS). The main reason of developing CMT was to assess how potential failures in AWS would affect their ability to produce continuous services. 
+%Netflix has a big challenge to maintain a continuous testing to their service reliability when they move their data center to AWS, in order to evaluate how potential failures in AWS would affect their ability to provide continuous services. They 
+%The basic idea was to introduce failures to the system and stress it in order to investigate how the system acts, where does it fail, when it fails, and under which circumstances~\cite{FaaS}.
+%\newline
+%This paper has shows that the more types of fault injected, the more errors discovered. the fault injection has been shown well preperation on  how the algorithms works. Faults can easily propagate in large scale distributed system, especially on a system that has high dependencies between its components.  
+%\newline
+CMT works by sending fault commands to the components that are hosted in the cloud. On receiving the commands, the instance of the cloud will fail itself. By introducing faults CMT enables Netflix to discover the bottlenecks and weaknesses in their systems. Moreover, this helps them to strength the weak areas that are critical in their system. As a result of their study, they have discovered that CMT helps to detect different failure scenarios. CMT helps to find unexpected failure that can not be detected using the traditional methods. %consequently, CMT helps in building a robust system that is resilient against failures.
+%\newline
+
+CMT software design is flexible and can be used for other cloud service providers. However, it is just applicable for testing the availability and robustness for the running services in the cloud. Chaos Monkey Testing is not be applicable in traditional systems with a small number of complex tasks or threads, since this can lead to complete failure within a short time. Chaos Monkey is more applicable to a large scale system that has the ability to perform even in the presence of failures. %Instead, LiC only triggers the monitoring process, then fast replacement of the terminated software part can be performed. 
+Additionally, CMT suffers from the limitation in terms of computational power. In the case of a large number of test cases to be executed, it might even dominate the power consumption. Using CMT in large scale systems will be costly and will consume extra resources such as network bandwidth, storage space, and processing power~\cite{gunawi2011failure}. When using this approach, an engineer should consider hardware reliability, memory managements, and the running environment. 
+ 
+\subsubsection{Let it Crash Philosophy}
+The work in~\cite{woskowskiassessing} investigates the use of the Let-it-Crash (LiC) paradigm to assess the applicability for safety related software, check how error handling perform, as well as identify potential improvements for future work. %Erlang is the programming language used. %was used as an implementation language for safety related functionality~\cite{woskowskiassessing}. 
+%\newline
+The main challenge of the LiC paradigm is to identify different software fault types in order to improve error handling in safety critical systems. 
+%\newline
+ 
+%%The evaluation of the LiC approach mainly depends on how well the system meets those requirements and does the system acts as it is expected. 
+%The following assumptions acted as requirements for developing flexible software architecture that can manage different fault scenarios and at the same time for assessing the applicability of  LiC: 
+%%\begin{itemize}
+%%  \item 
+%(i) Ensure the execution of critical functions; 
+%%  \item 
+%(ii) Prevent the unintended execution of a function; 
+%%  \item 
+%(iii) Define and monitor the conditions for carrying out a critical function; 
+%%  \item 
+%(iv) Ensure carrying out critical functions at a specific time and in a specific order; and 
+%%  \item 
+%(v) Unexpected failures either have no influence or result in a safe state.
+%%  \end{itemize}
+ 
+%Chaos Monkey Testing is not be applicable in traditional system with a small number of complex tasks or threads, since this can lead to complete failure within a short time. Chaos Monkey is more applicable to a large scale system that has the ability to perform even in the presence of failures. Instead, 
+LiC only triggers the monitoring process, then fast replacement of the terminated software part can be performed. 
+%\newline
+LiC can be efficiently utilized in safety related software development that have low number of complex tasks. The programming language should be Erlang and it does not cover large scale embedded distributed system. Furthermore, this approach has a problem when it comes to safety-critical system with hard time constraints, since Erlang is not supporting that~\cite{woskowskiassessing}. 
+
+
+%\newline
+
+
+%\subsection{Improving Fault Injection in Automotive Model Based Development}
+%
+%Model based development (MBD) has been widely used in the automotive software development. MBD allows the verification and validation of the functionality and their dependencies in an early stage of the development cycle. Fault injection can be used for dependability evaluation at the model level for the hardware artifacts. However, the interdependencies between the system and its environment at the model level may affect the result reliability to be unrealistic. This research paper presents an approach in order to come over this problem that they observed. This problem makes it difficult to utilizing fault injection at an early stage of development. Fault the bypass modeling (FBM) framework has been presented and evaluated in \cite{rana2013improving}. The FBM framework can be used in order to observe the system behavior under fault injection modes. With this framework the system behavior will be monitored and analyzed in an early stage of the development cycle.
+%%\newline
+%
+%Analyzing system behavior in an early stage will reduce the amount of defects in late stage, improve the quality, as well as reduce the development time. Those advantages are very important especially when the system is safety critical system. Fault injection techniques have been proven to be an efficient technique for testing the robustness of the system. However, fault injection has a limitation when using it in a close loop model testing, the reason behind that is the interdependences between the system and its environment at the model level may affect the result to be unrealistic with unrealistic system behavior. Using the FBM will resolve this problem thus make it possible to use fault injection correctly in order to test the behavior model for dependability and robustness evaluation. The FBM helps an early defect detection which will not only save time and cost, but also will increase the quality of the development. Using the fault injection techniques at the model level will allow discovering the dependability issues on an early stage. As a conclusion more robust system will be developed an evaluated continuously from the early stage \cite{rana2013improving}. 
+

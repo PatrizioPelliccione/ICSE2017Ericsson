@@ -1,0 +1,211 @@
+% This is "sig-alternate.tex" V2.0 May 2012
+% This file should be compiled with V2.5 of "sig-alternate.cls" May 2012
+%
+% This example file demonstrates the use of the 'sig-alternate.cls'
+% V2.5 LaTeX2e document class file. It is for those submitting
+% articles to ACM Conference Proceedings WHO DO NOT WISH TO
+% STRICTLY ADHERE TO THE SIGS (PUBS-BOARD-ENDORSED) STYLE.
+% The 'sig-alternate.cls' file will produce a similar-looking,
+% albeit, 'tighter' paper resulting in, invariably, fewer pages.
+%
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V2.5) produces:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) NO page numbers
+%
+% as against the acm_proc_article-sp.cls file which
+% DOES NOT produce 1) thru' 3) above.
+%
+% Using 'sig-alternate.cls' you have control, however, from within
+% the source .tex file, over both the CopyrightYear
+% (defaulted to 200X) and the ACM Copyright Data
+% (defaulted to X-XXXXX-XX-X/XX/XX).
+% e.g.
+% \CopyrightYear{2007} will cause 2007 to appear in the copyright line.
+% \crdata{0-12345-67-8/90/12} will cause 0-12345-67-8/90/12 to appear in the copyright line.
+%
+% ---------------------------------------------------------------------------------------------------------------
+% This .tex source is an example which *does* use
+% the .bib file (from which the .bbl file % is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission, you *NEED* to 'insert'
+% your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% ================= IF YOU HAVE QUESTIONS =======================
+% Questions regarding the SIGS styles, SIGS policies and
+% procedures, Conferences etc. should be sent to
+% Adrienne Griscti (griscti@acm.org)
+%
+% Technical questions _only_ to
+% Gerald Murray (murray@hq.acm.org)
+% ===============================================================
+%
+% For tracking purposes - this is V2.0 - May 2012
+
+%\documentclass[10pt, conference, compsocconf]{IEEEtran}
+\documentclass[10pt,conference]{IEEEtran}
+%\documentclass{sig-alternate}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color}
+\usepackage{pifont}
+\sloppy
+
+\newcommand {\pat}[1]{[{\bf \underline{Patrizio}}: {\bf #1}]}
+\newcommand{\todo}[1]{\textcolor{blue}{\ding{46}~{\sf todo}~#1}}
+
+%\newcommand{\definition}[2]{\noindent \textbf{\emph{Definition #1}} (#2)}
+\newcommand{\ttransition}[2]{\stackrel{#1}{\longrightarrow^{#2}}}
+\newcommand{\ntransition}[1]{\longrightarrow^{#1}}
+\newcommand{\transition}[1]{\stackrel{#1}{\rightarrow}}
+\newcommand{\Transition}[1]{\stackrel{#1}{\Rightarrow}}
+\newcommand{\freccia}[1]{\mathop{\stackrel{#1} {\longrightarrow}} }
+\newcommand{\ug}[1]{\mathop{=}\limits^{#1}_{}}
+\newcommand{\barra}[1]{\overline{#1}}
+\newcommand{\eqdef}{\stackrel{def}{=}}
+
+
+\newcommand{\footlabel}[2]{%
+    \addtocounter{footnote}{1}%
+    \footnotetext[\thefootnote]{%
+        \addtocounter{footnote}{-1}%
+        \refstepcounter{footnote}\label{#1}%
+        {\footnotesize #2}%
+    }%
+    $^{\ref{#1}}$%
+}
+
+\newcommand{\footref}[1]{%
+    $^{\ref{#1}}$%
+}
+
+\newcommand{\approach}{Postmonkey}
+
+
+\usepackage{listings}
+
+% colors
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{light-gray}{gray}{0.85}
+
+% listing settings
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C,                      % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  caption=A program                % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+
+\begin{document}
+
+
+\title{Towards Online Testing of Distributed Embedded Systems: an Industrial Experience}
+
+%\title{Testing of Distributed Embedded Systems: an Industrial Experience}
+
+
+
+\author{\IEEEauthorblockN{Zhenxiao Hao\IEEEauthorrefmark{1}, Khaled Alnawasreh\IEEEauthorrefmark{1}, Patrizio Pelliccione\IEEEauthorrefmark{1},  M\aa rten R\aa nge\IEEEauthorrefmark{2}, and Antonia Bertolino\IEEEauthorrefmark{3}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Chalmers University of Technology $|$ University of Gothenburg\\
+Department of Computer Science and Engineering,
+Gothenburg, Sweden\\
+Email: zhenxiao@student.chalmers.se, khaled.nawasreh@gmail.com, patrizio.pelliccione@gu.se}
+%\and
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Ericsson AB, Gothenburg, Sweden}
+\IEEEauthorblockA{\IEEEauthorrefmark{3}ISTI - CNR, Via G. Moruzzi 1, 56124 Pisa, Italy}
+%\IEEEauthorblockA{
+%Email: name@xyz.com}
+}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+
+\maketitle
+\begin{abstract}
+Having robust systems that are able to perform normally even with the existence of faults is becoming increasingly important. This is the case of the embedded distributed system in the RBS (Radio Based Station) at Ericsson AB in Gothenburg, Sweden, which we investigate in this paper. Specifically, this paper describes a novel fault injection approach for %online 
+testing the robustness of an embedded distributed system consisting of components that communicate with each other via messages exchange. 
+The new approach is inspired by Netflix's ChaosMonkey, a fault injection approach that has been developed for testing the distributed systems hosted on the cloud. In the context of RBS we cannot use ChaosMonkey as it is since 
+RBS is a distributed system consisting of small-embedded components with specific requirements of performance, programming language, and communication paradigm.
+This paper reports about the approach we developed, called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.},  the faults we discovered though the use of the approach, and discusses about the potential of utilizing fault injection to %online 
+testing complex, embedded, and distributed systems. The approach and tool are now adopted by Ericsson.
+\end{abstract}
+
+\begin{IEEEkeywords}
+online testing; fault injection; distributed embedded systems;
+
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+\input{Introduction.tex}
+\input{Related_Work.tex}
+\input{Implementation.tex}
+\input{Results.tex}
+\input{Discussion.tex}
+%\input{framework.tex}
+%\input{instantiation.tex}
+%\input{validation.tex}
+%\input{discussion.tex}
+\input{Conclusion.tex}
+
+			
+
+\balance
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}

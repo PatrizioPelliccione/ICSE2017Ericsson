@@ -1,0 +1,45 @@
+\section{ Conclusion}\label{sec:conclusion}
+
+This paper proposes a new fault injection approach to test distributed and embedded system with limited computation power. We performed the study in collaboration with Ericsson AB in Gothenburg, Sweden.
+%study aimed to verify the robustness of the distributed system at Ericsson. 
+%In particular, traditional testing techniques are used at Ericsson. However, t
+%Traditional testing lacks of detecting the unexpected faults and dependency issues. We come over this problem by developing a new fault injection approach that performed based on non deterministic testing. Furthermore, t
+This approach came as a complementary to traditional testing. As described in the paper, we developed the fault injection approach and the approach detected some unexpected faults. We observed also that fault injection can be adopted to test embedded distributed system and dependency bottlenecks can be identified. This approach provided the development team at Ericsson with 
+%to utilize 
+a better validation technique that permits to reduce the number of %and reduced from the 
+unpredicted faults that appeared during the operations on the customers sides. %In the long run, using fault injection increases code quality, confidence level as well as reduces the cost.  %Academically, this thesis gave attention on the benefits of adopting such approach for fault tolerance ability of embedded distributed systems. In industry, generalizing this approach can help different companies that have a common interest in verifying the robustness of their embedded distributed system. 
+
+As future work we plan to replicate the study to other organizations within Ericsson and to other companies  to better validate the generality of the approach. %make the approach more general.
+%\subsection{Future work}
+%This section shows some key improvements that can be considered for future work. This study focused on Ericsson environment. It would be interesting to involve more companies in the study for making more general approach to embedded distributed system, at the same time the result will be more reliable and general. In order to expand this approach and make it more general, the following suggestions can be taken into the consideration. 
+We plan also to investigate steps that will permit to deploy the approach on customer production networks.  
+%We plan also to integrate the approach with another testing technique such as mutation testing. Combining fault injection with mutation testing can be very effective and efficient, since fault injection tests the dependencies between the components and mutation testing tests the functionality of the system.  
+%Previous research has described the strength of combining the fault injection with mutation testing in model based development~\cite{combinationtesting}. 
+
+Finally, additional fault types can be injected such as register and memory faults, killing process, CPU overloads,  slow down network, fork bomb at a particular node, and drop network packets for duration of period at a certain rate, etc. %By injecting more fault types, the confidence level will be increased at the same time the total quality of the system will also be increased.  
+It would also be an area of interest to test a combination of faults. This can be done by injecting a combination of faults in different order and at different time. %In this case the probability of detecting faults will increase for the reason of a larger set of input are involved in testing. 
+
+
+%\begin{itemize}
+%  \item Integrating this approach with another testing technique such as mutation testing.
+%  \item Injecting the system with more fault types.
+%  \item Make the same study on other companies and compare the result to see if it can be generic.
+%  \end{itemize}
+
+%\subsubsection{Integrating fault injection approach with mutation testing}
+%
+%Fault injection technique can be used in order to detect dependencies faults at the late stage of the development process. Utilizing fault injection approaches in an early stage is not the best practice. Therefore, combining fault injection techniques with mutation testing will improve the efficiency of detecting the faults at an early stage, thus reducing the cost as well as the time spend in detecting faults. Previous research has described the strength of combining the fault injection with mutation testing in model based development \cite{combinationtesting}.  
+%
+%Combining fault injection with mutation testing can be very effective and efficient, since fault injection tests the dependencies between the components and mutation testing tests the functionality of the system. Thus combining them will increase the confidence level of the internal and external code of the components as well as the consistencies between them. Moreover, the combined approach can be applied in an early stage and late stage of the development cycle. By doing this, the code will be validated continuously, the certainty level will be increased and bugs will be fixed in an early stage with lower cost.     
+
+%\subsubsection{Injecting the system with more fault types}
+%
+%
+%Due to time constrains we just focused on the two most potential fault types which are sending random messages as well as messages delaying. However, more fault types can be injected such as register and memory faults, killing process, CPU overloads,  slow down network, fork bomb at a particular node, and drop network packets for duration of period at a certain rate, etc. By injecting more fault types, the confidence level will be increased at the same time the total quality of the system will also be increased.  
+%
+%It would also be an area of interest to test a combination of faults. This can be by injecting a combination of faults in different order and at different time. In this case the probability of detecting faults will increase for the reason of a larger set of input are involved in testing. Furthermore, faults can act differently when injecting them in different order and different time \cite{FaaS}. Testing a combination of faults in a random based can detect even more unexpected faults. Moreover, this will increase the subset of the test suite that could be covered.    
+%
+%While fault injection is non deterministic testing that based on random manner, random testing can scale much more than deterministic testing \cite{random}. Particularly, the Ericsson system scales fast and using random testing will be cost effective in the long run. In this case the maintainability cost will not be at risk in case of updating the test suite.
+
+
+
