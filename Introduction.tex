@@ -14,8 +14,7 @@ tests tend to test the existence of specified (known) failure modes, however, al
 unknown failure modes  should be taken into account.
 
 This is true in particular in testing system robustness, i.e. the degree to which it can continue to function correctly even in the presence of invalid inputs or stressful environmental conditions~\cite{STANDARD}.
-
-Due to the complexity of testing the services that are running on large scale distributed systems, verifying the robustness of distributed system is not trivial. %Furthermore, the amount of faults that can occur is large. 
+In fact, due to the complexity of testing the services that are running on large scale distributed systems, verifying the robustness of distributed system is not trivial. %Furthermore, the amount of faults that can occur is large. 
 %Services running in distributed systems are difficult to be tested using traditional methods \cite{FaaS}. 
 Moreover, when faults occur in running services, faults can exponentially propagate~\cite{verification_testing}. 
 %Therefore, identifying faults in a running application in a production environment would go a long way. In particular, traditional testing will not provide a high confident testing level and it lacks of detecting unexpected faults. 
@@ -33,22 +32,23 @@ that the system meets its requirements continuously.
 
 In this paper we present an approach that has been conceived for online testing of system robustness for distributed embedded systems at Ericsson AB in Gothenburg. 
 As anticipated, when dealing with large scale distributed systems it is 
-very hard to anticipate the possible scenarios that can occur as caused by interactions and collaborations among the distributed and potentially independent systems. This motivates the interest for robustness that focuses on invalid inputs or stressful environmental conditions and for no-deterministic approaches that permit to go beyond specified and then known failure modes.
+very hard to anticipate the possible scenarios that can occur as caused by interactions and collaborations among the distributed and potentially independent systems. This motivates the interest for robustness %that focuses on invalid inputs or stressful environmental conditions 
+and for no-deterministic approaches that permit to go beyond specified and then known failure modes.
 
-The approach is called \approach{}. At present stage, it has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production.
+The approach is called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.}, and has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. At present stage, it has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production.
 
 The \approach{}  approach provides non-deterministic testing method for testing the robustness of distributed embedded systems %. %The main idea is to check if the fault injection approach can be applicable to embedded distributed system. 
 %Specifically we focus on systems consisting of small embedded components, 
-with very limited computation power. We believe that randomized testing is a cost-effective way to complement traditional testing, remove potential  developer bias, and identify unknown failure modes. 
+with very limited computation power. \approach{} injects two different fault types, namely sending invalid messages and delaying the messages. We believe that randomized testing is a cost-effective way to complement traditional testing, remove potential  developer bias, and identify unknown failure modes. 
 
-\approach{} injects two different fault types, namely sending invalid messages and delaying the messages. 
+%\approach{} injects two different fault types, namely sending invalid messages and delaying the messages. 
 %This study is expected to benefits Ericsson who has an interest to test the robustness of their distributed system.
 %The fault injection technique has been proposed as a possible way to address the fault tolerance challenges of distributed systems. This technique has been utilized for many years in order to verify the fault tolerance level of critical systems. Robustness of the system is important for Ericsson products and for embedded distributed systems. There is a need for Ericsson to have a fault injection tool in order to provide more robust products, the embedded industry is also calling for more research on utilizing fault injection on embedded distributed systems.
 %\newline
 %\section{Goals}
 %The main purpose of this study is to test the robustness and availability of the distributed systems. In this thesis we present a fault injection approach that provides non-deterministic testing method for testing the robustness of the distributed systems. The main idea is to check if the fault injection approach can be applicable at Ericsson embedded distributed system. This study is expected to benefits Ericsson who has an interest to test the robustness of their distributed system.
 %\newline 
-This work has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. % working on common subsystems for Radio Base Stations. % (called CNA). 
+%This work has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. % working on common subsystems for Radio Base Stations. % (called CNA). 
 %Due to the complexity of distributed systems and the challenges of testing distributed systems with traditional approaches, a new approach based on some existing distributed systems testing technique and researches is needed. %The main investigation of this thesis is how to develop a new fault injection approach and implement a new fault injection tool to help the development team at Ericsson in testing their embedded distributed system. Moreover, we aim to make the fault injection approach as general as possible so it can be used in other companies and bring benefits to the embedded industry in general.
 %\newline
 
