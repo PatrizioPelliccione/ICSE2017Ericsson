@@ -30,16 +30,19 @@ that the system meets its requirements continuously.
 %networks we run internally. %In other words, t
 %Thanks to this approach we run the randomized tests in simulated environments and actual hardware but they are not part of a production environment.
 
-In this paper we present an approach that has been conceived for online testing of system robustness for distributed embedded systems at Ericsson AB in Gothenburg. 
+In this paper we present an approach,  called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.}, that has been conceived for online testing of system robustness for distributed embedded systems. \approach{} has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. % at Ericsson AB in Gothenburg. 
 As anticipated, when dealing with large scale distributed systems it is 
 very hard to anticipate the possible scenarios that can occur as caused by interactions and collaborations among the distributed and potentially independent systems. This motivates the interest for robustness %that focuses on invalid inputs or stressful environmental conditions 
 and for no-deterministic approaches that permit to go beyond specified and then known failure modes.
 
-The approach is called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.}, and has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. At present stage, it has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production.
-
-The \approach{}  approach provides non-deterministic testing method for testing the robustness of distributed embedded systems %. %The main idea is to check if the fault injection approach can be applicable to embedded distributed system. 
+The \approach{}  approach provides non-deterministic testing method for checking the robustness of distributed embedded systems %. %The main idea is to check if the fault injection approach can be applicable to embedded distributed system. 
 %Specifically we focus on systems consisting of small embedded components, 
 with very limited computation power. \approach{} injects two different fault types, namely sending invalid messages and delaying the messages. We believe that randomized testing is a cost-effective way to complement traditional testing, remove potential  developer bias, and identify unknown failure modes. 
+
+%The approach is called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.}, and has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. 
+
+
+
 
 %\approach{} injects two different fault types, namely sending invalid messages and delaying the messages. 
 %This study is expected to benefits Ericsson who has an interest to test the robustness of their distributed system.
@@ -97,7 +100,7 @@ with very limited computation power. \approach{} injects two different fault typ
 
 %\newline
 
-Since we followed an agile development process, the fault injection approach was evaluated continually also through log files storing wanted and unwanted system behaviors, like system interrupts, messaging delaying, timeout and so on. Continuous evaluation of the approach helped us in developing the work as needed, decreasing the uncertainty level, and increasing the work quality. The source code of each iteration was pushed to a remote repository where practitioners had access to. During the weekly meeting with practitioners, we got feedback on the fault injection approach and tool. Furthermore, during the last iteration we presented the fault injection approach and tool to the development team for a final validation.
+Since we followed an agile development process, \approach{} was evaluated continually also through log files storing wanted and unwanted system behaviors, like system interrupts, messaging delaying, timeout and so on. Continuous evaluation of the approach helped us in developing the work as needed, decreasing the uncertainty level, and increasing the work quality. The source code of each iteration was pushed to a remote repository where practitioners had access to. During the weekly meeting with practitioners, we got feedback on the fault injection approach and tool. Furthermore, during the last iteration we presented the fault injection approach and tool to the development team for a final validation.
 
 %The faults caused by the new fault injection tool were monitored through log files, by analyzing the behaviors of the system through the log files, the new fault injection approach was evaluated continually. Everything appears in the log files introduced by the fault injection tool was analyzed in order to evaluate the tool. An example of unwanted system behavior can be like system interrupts, messaging delaying, timeout and so on.
 %\newline
@@ -113,15 +116,17 @@ systems. Furthermore, using our approach we detected unexpected faults within di
 %non deterministic testing is applied. 
 Although the quality of system has been proven to be quite high, there have been some surprises, which were not caught by traditional testing: (i) fuzzing of signals has detected a weakness in handling dynamically sized objects causing a crash which then could be rectified, and (ii) randomized delays detected misconfigured timeout handling. It is important to highlight that the manual test case had the same mistake as the production code so the error was missed.
 
-Our approach also provided a clear indication of dependency bottlenecks, i.e. where faults might most probably occur. Consequently we suggested improvements of the software architecture and some %keys of 
+\approach{} also provided a clear indication of dependency bottlenecks, i.e. where faults might most probably occur. Consequently we suggested improvements of the software architecture and some %keys of 
 improvements
 were built from the observed results. The approach is now adopted within the division of Ericsson with which we collaborated for realizing this work.
 %Finally, this approach came as a complementary
 %of the existing traditional testing approach.
  
-Summarizing, two are the main contributions of the paper: (i) \approach{}, a non-deterministic testing approach for testing the robustness of distributed embedded systems 
-with very limited computation power, and (ii)
-the successful collaboration model between academia and industry. Both contributions are general and can be adopted and replicated in other companies.
+At present stage, \approach{} has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production. 
+ 
+%Summarizing, two are the main contributions of the paper: (i) \approach{}, a non-deterministic testing approach for testing the robustness of distributed embedded systems 
+%with very limited computation power, and (ii)
+%the successful collaboration model between academia and industry. Both contributions are general and can be adopted and replicated in other companies.
 
 %\subsection{Paper structure}
 This paper is structured as follows: Section~\ref{sec:context} identifies the context of the paper and presents the industrial environment in which we performed the research. Section~\ref{sec:relatedWorks} compares the approach to related works. Section~\ref{sec:approach} introduces the fault injection approach and Section~\ref{sec:implementation} describes the implementation of the approach. Section~\ref{sec:results} reports the validation and results obtained by applying the approach on a real industrial environment. Section~\ref{sec:discussion} discusses lessons learned. Finally the paper concludes with final remarks and future research directions in Section~\ref{sec:conclusion}.
