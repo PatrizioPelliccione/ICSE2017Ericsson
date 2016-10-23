@@ -129,22 +129,22 @@
 \begin{document}
 
 
-\title{Towards Online Testing of Distributed Embedded Systems: an Industrial Experience}
-
+\title{Online Robustness Testing of Distributed Embedded Systems: an Industrial Approach}
+%Online Robustness Testing of Distributed Embedded Systems: An Industrial Approach
 %\title{Testing of Distributed Embedded Systems: an Industrial Experience}
 
 
 
-\author{\IEEEauthorblockN{Zhenxiao Hao\IEEEauthorrefmark{1}, Khaled Alnawasreh\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, Patrizio Pelliccione\IEEEauthorrefmark{1},  M\aa rten R\aa nge\IEEEauthorrefmark{2}, and Antonia Bertolino\IEEEauthorrefmark{3}}
+\author{\IEEEauthorblockN{Khaled Alnawasreh\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, Patrizio Pelliccione\IEEEauthorrefmark{1}, Zhenxiao Hao\IEEEauthorrefmark{1}, M\aa rten R\aa nge\IEEEauthorrefmark{2}, and Antonia Bertolino\IEEEauthorrefmark{3}}
 \IEEEauthorblockA{\IEEEauthorrefmark{1}Chalmers University of Technology $|$ University of Gothenburg\\
 Department of Computer Science and Engineering,
-Gothenburg, Sweden\\
-Email: zhenxiao@student.chalmers.se, khaled.nawasreh@gmail.com, patrizio.pelliccione@gu.se}
+Gothenburg, Sweden}
 %\and
 \IEEEauthorblockA{\IEEEauthorrefmark{2}Ericsson AB, Gothenburg, Sweden}
 \IEEEauthorblockA{\IEEEauthorrefmark{3}ISTI - CNR, Via G. Moruzzi 1, 56124 Pisa, Italy}
 %\IEEEauthorblockA{
 %Email: name@xyz.com}
+\IEEEauthorblockA{khaled.nawasreh@gmail.com, patrizio.pelliccione@gu.se, haozhenxiao2010@gmail.com, \\ marten.range@ericsson.com, antonia.bertolino@isti.cnr.it}
 }
 
 % conference papers do not typically use \thanks and this command
@@ -175,11 +175,18 @@ Email: zhenxiao@student.chalmers.se, khaled.nawasreh@gmail.com, patrizio.pellicc
 
 \maketitle
 \begin{abstract}
-Having robust systems that are able to perform normally even with the existence of faults is becoming increasingly important. This is the case of the embedded distributed system in the RBS (Radio Based Station) at Ericsson AB in Gothenburg, Sweden, which we investigate in this paper. Specifically, this paper describes a novel fault injection approach for %online 
-testing the robustness of an embedded distributed system consisting of components that communicate with each other via messages exchange. 
-The new approach is inspired by Netflix's ChaosMonkey, a fault injection approach that has been developed for testing the distributed systems hosted on the cloud. In the context of RBS we cannot use ChaosMonkey as it is since 
-RBS is a distributed system consisting of small-embedded components with specific requirements of performance, programming language, and communication paradigm.
-This paper reports about the approach we developed, the faults we discovered though the use of the approach, and discusses about the potential of utilizing fault injection to %online 
+Having robust systems that behave properly even in presence 
+%able to perform normally even with the existence 
+of faults is becoming increasingly important. This is the case of the system we investigate in this paper, which is an embedded distributed system consisting of components that communicate with each other via
+messages exchange in the RBS (Radio Based Station) at Ericsson AB in Gothenburg, Sweden. %, which we investigate in this paper. 
+Specifically, this paper describes a novel fault injection approach for %online 
+testing the robustness of such system. 
+%an embedded distributed system consisting of components that communicate with each other via messages exchange. 
+The new approach is inspired by Netflix's ChaosMonkey, a fault injection approach that has been developed for testing  distributed systems hosted on the cloud. In the context of RBS we cannot use ChaosMonkey  since 
+RBS consists of small-embedded components with specific requirements of performance, programming language, and communication paradigm.
+This paper reports about the approach we developed, illustrates the results of applying the approach to RBS, 
+%the faults we discovered though the use of the approach, 
+and discusses about the potential of utilizing fault injection to %online 
 testing complex, embedded, and distributed systems. The approach and tool are now adopted by Ericsson.
 \end{abstract}
 

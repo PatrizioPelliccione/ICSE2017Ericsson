@@ -7,7 +7,7 @@
     
 %Chaos Monkey, an open source project which adopts the fault injection technique, was developed by Netflix when they moved their data center to the cloud. The main function of Chaos Monkey is to inject random faults to the distributed system hosted on the cloud. While Chaos Monkey is used, fault injection is becoming a more popular technique for testing distributed systems, various researches on fault injection are springing out. At same time, other types of fault injection tools were also introduced, but most of them are used to test systems hosted on the cloud.     
     
-As software for distributed systems becomes more complex, ensuring that a system meets its prescribed specification is a growing challenge for software developers~\cite{dawson1996testing}. Testing of large scale distributed systems may be very hard due to the fact that the number of faults that can occur at any time is very large and it is very hard to imagine the possible scenarios that can occur as caused by interactions and collaborations among the distributed and potentially independent systems. 
+As software for distributed systems becomes more complex, ensuring that a system meets its prescribed specification is a growing challenge for software developers~\cite{dawson1996testing}. Testing of large scale distributed systems may be very hard due to the fact that the number of different types of faults that can occur at any time is very large and it is very hard to imagine the possible scenarios that can occur as caused by interactions and collaborations among the distributed and potentially independent systems. 
 %as well as it is very hard to imagine the scenarios that can occur. 
 Traditional testing techniques are not sufficient to predict the effects of faults on real-world applications running on large distributed systems~\cite{FaaS}. In general, manual 
 tests tend to test the existence of specified (known) failure modes, however, also %because of bugs in specification and code there are 
@@ -100,7 +100,8 @@ with very limited computation power. \approach{} injects two different fault typ
 
 %\newline
 
-Since we followed an agile development process, \approach{} was evaluated continually also through log files storing wanted and unwanted system behaviors, like system interrupts, messaging delaying, timeout and so on. Continuous evaluation of the approach helped us in developing the work as needed, decreasing the uncertainty level, and increasing the work quality. The source code of each iteration was pushed to a remote repository where practitioners had access to. During the weekly meeting with practitioners, we got feedback on the fault injection approach and tool. Furthermore, during the last iteration we presented the fault injection approach and tool to the development team for a final validation.
+%Since 
+To develop the approach, we followed an agile development process, and consequently \approach{} was evaluated continuously also through log files storing wanted and unwanted system behaviors, like system interrupts, messaging delaying, timeout and so on. Continuous evaluation of the approach helped us in developing the work as needed, decreasing the uncertainty level, and increasing the work quality. The source code of each iteration was pushed to a remote repository which practitioners had access to. During the weekly meeting with practitioners, we got feedback on the fault injection approach and tool. Furthermore, during the last iteration we presented the fault injection approach and tool to the development team for a final validation.
 
 %The faults caused by the new fault injection tool were monitored through log files, by analyzing the behaviors of the system through the log files, the new fault injection approach was evaluated continually. Everything appears in the log files introduced by the fault injection tool was analyzed in order to evaluate the tool. An example of unwanted system behavior can be like system interrupts, messaging delaying, timeout and so on.
 %\newline
@@ -124,8 +125,9 @@ were built from the observed results. The approach is now adopted within the div
  
 At present stage, \approach{} has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production. 
  
-%Summarizing, two are the main contributions of the paper: (i) \approach{}, a non-deterministic testing approach for testing the robustness of distributed embedded systems 
-%with very limited computation power, and (ii)
+Summarizing, the main contribution of the paper is \approach{}, a non-deterministic testing approach for checking the robustness of distributed embedded systems with very limited computation power. The approach and lessons learned are general and can be adopted and replicated in other companies.
+The successful collaboration model between academia and industry is based on iterative development/validation cycles and close collaboration with practitioners thus enabling continuous feedback and integration with real environments. 
+%, and (ii)
 %the successful collaboration model between academia and industry. Both contributions are general and can be adopted and replicated in other companies.
 
 %\subsection{Paper structure}
