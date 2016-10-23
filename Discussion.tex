@@ -44,7 +44,13 @@ The faults were identified and diagnosed by observing the stack trace on the log
 
 %As conclusion, this study indicated that fault injection can be feasible and applicable for testing the robustness and the dependability of the embedded distributed system. Furthermore, unexpected faults were detected using the fault injection approach. Moreover, this study can be taken as an inspiration on how to utilize fault injection techniques on embedded distributed systems in general.  
 
+%\subsection{Improvements to the software architecture}
 
+Moreover \approach{} helped improving the software architecture of the system. 
+%Since the complexity of the software is dramatically increasing and systems are scaling over the time, the dependency level will also be increased. In a distributed system, there are always dependencies between the components and some dependencies are more critical than others. % on how the system should perform; t
+%This can be due to the fact that the amount of coupling between the components varies. In order to perform a particular action, the action should follow a specific sequence performed at different components that are connected with each other. Whenever a critical component has failed, the rest of the connected components can also fail. 
+After a deep study of the distributed system architecture at Ericsson, we identified some critical components, which failures can be potential due to the strong dependencies. For such dependencies we used message delaying as failure type for testing the timeout mechanism. %is a potential failure type in such dependencies. 
+Specifically, we delayed the messages between the critical components as well as tracked the system behavior through the log files. Under those circumstances, we have discovered that the system will not act as it should be when delaying the messages at a specific time. In the long run, software architecture can be improved by having lower dependencies on those critical components. By having lower coupling, components will be easier to replace, reduce the chance that a change in one component causes a problem in the other components which enhances reusability, reduce the chance that a fault in one component causes failures in other components; this  enhances robustness~\cite{software_arch}.  
 
 %\subsection{Generalizability}\label{sec:generalizability}
 %
