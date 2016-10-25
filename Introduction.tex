@@ -14,7 +14,7 @@ tests tend to test the existence of specified (known) failure modes, however, al
 unknown failure modes  should be taken into account.
 
 This is true in particular in testing system robustness, i.e. the degree to which it can continue to function correctly even in the presence of invalid inputs or stressful environmental conditions~\cite{STANDARD}.
-In fact, due to the complexity of testing the services that are running on large scale distributed systems, verifying the robustness of distributed system is not trivial. %Furthermore, the amount of faults that can occur is large. 
+As a matter of facts, verifying the robustness of distributed system is not trivial. %Furthermore, the amount of faults that can occur is large. 
 %Services running in distributed systems are difficult to be tested using traditional methods \cite{FaaS}. 
 Moreover, when faults occur in running services, faults can exponentially propagate~\cite{verification_testing}. 
 %Therefore, identifying faults in a running application in a production environment would go a long way. In particular, traditional testing will not provide a high confident testing level and it lacks of detecting unexpected faults. 
@@ -119,11 +119,10 @@ Although the quality of system has been proven to be quite high, there have been
 
 \approach{} also provided a clear indication of dependency bottlenecks, i.e. where faults might most probably occur. Consequently we suggested improvements of the software architecture and some %keys of 
 improvements
-were built from the observed results. The approach is now adopted within the division of Ericsson with which we collaborated for realizing this work.
+were built from the observed results. The approach is now adopted within the division of Ericsson with which we collaborated for realizing this work. 
 %Finally, this approach came as a complementary
 %of the existing traditional testing approach.
- 
-At present stage, \approach{} has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production. 
+ At present stage, \approach{} has not yet been deployed in customer production networks, as further validation is ongoing. However, it is now used in networks that are run internally at Ericsson to capture faults at last stage before deployment to production. 
  
 Summarizing, the main contribution of the paper is \approach{}, a non-deterministic testing approach for checking the robustness of distributed embedded systems with very limited computation power. The approach and lessons learned are general and can be adopted and replicated in other companies.
 The successful collaboration model between academia and industry is based on iterative development/validation cycles and close collaboration with practitioners thus enabling continuous feedback and integration with real environments. 
