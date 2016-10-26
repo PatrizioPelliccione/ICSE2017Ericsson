@@ -13,22 +13,22 @@ As anticipated in the introduction the approach and tool have been developed in 
 %basically through 
 we had weekly 
 meetings with practitioners %the supervisors 
-at Ericsson and we analysed available documentation about the PM framework 
+at Ericsson and  analysed available documentation about the PM framework 
 %organized by our industrial author 
 %in order to gather more information on how the system works as well as some suggestions about the injection. We also analyzed Ericsson PM framework documents 
 for identifying the bottleneck of the system and determining the injections. Additionally, Ericsson's internal fault reports and other available documents helped in gathering more information about the weakness of the system and identifying where problems can occur. 
 %After deep studying of system weakness together with possible faults which might happen in reality, random faults were designed. At the same time the system was experimented by running with different scenarios and inspecting the log files. 
 \item 
-{\em Suggestion and solution}: based on Ericsson fault report and designed fault tolerant ability of the PM framework, potential fault types were discussed with practitioners. We decided to address two fault types, the first one was sending random messages and the second one was delaying messages. The rational of sending random messages is to 
+{\em Suggestion and solution}: based on Ericsson fault report and designed fault tolerant ability of the PM framework, potential fault types were discussed with practitioners. We decided to address two fault types: the first one was sending random messages and the second one was delaying messages. The rational of sending random messages is to 
 %, we got the idea from the supervisor in order to 
-test the filter ability of the PM framework against random invalid messages. Delaying the messages were performed between the critical components of the PM framework where faults can occur.
+test the filter ability of the PM framework against random invalid messages. Message delays were introduced between the critical components of the PM framework where faults can occur.
 \item 
 {\em Implementation}: the implementation phase contains two steps: tool development and tool integration. It is detailed in Section~\ref{sec:implementation}. %The first step mainly concerns the work of development the fault injection tool using an Ericsson internal shared library called Inter Process Communication. The second step mainly concerns the work of integrating the developed tool into the automatic testing environment of the PM framework.
 \item 
 {\em Evaluation}: since we followed an agile development process we had a continuous evaluation of the approach and tool through the following means: %
 %\begin{itemize}
 %    \item 
-(i) we had weekly meeting with practitioners for getting feedback;
+(i) weekly meeting with practitioners for getting feedback;
     %\item Well identified requirements for the expected conformance level on how the tool should work.
 %    \item 
 (ii) continuous validation of  defined requirements for the expected conformance level on how the approach should work; 
@@ -36,7 +36,7 @@ test the filter ability of the PM framework against random invalid messages. Del
 (iii) observation of the results of the execution of the fault injection tool stored in log files;
 (iv) comparison of the observed results with the expected ones (how the system should perform in its normal state);
 %    \item 
-(v) if faults were detected, evaluation of the faults by tracing back to the cause that made them.
+(v) if faults were detected, evaluation of the faults by tracing backwards to their causes.
 %\end{itemize}  
 \end{itemize}
 
@@ -72,7 +72,7 @@ As better explained in Section~\ref{sec:implementation} configuration files are 
 After running the \approach{} tool, all data are monitored from the log files using stack trace. These data are collected and analyzed for the evaluation of the approach and of the tool. % as well as for answering the main research questions. 
 The user can run and control the tool through the controller, where the automatic testing environments and the configuration files are located. Through the automatic testing environment different testing techniques are listed. The \approach{} tool supports random mechanisms where the number of faulty messages, message delay, and the time interval between sending the messages are randomized. The user can manually adjust the test cases through the configuration files.    
 
-The \approach{} approach provides different fault types at different location and time. We have developed two fault types: (i) sending random messages and (ii) delaying the messages. Fault types such as sending invalid messages and delaying the messages were done by linking some dynamic libraries of IPC during run time. IPC library is a separate component, which consists of different system functionalities such as sending the messages between different system component.
+The \approach{} approach provides different fault types at different location and time. As said, we have developed two fault types: (i) sending random messages and (ii) delaying the messages. Fault types such as sending invalid messages and delaying the messages were done by linking some dynamic libraries of IPC during run time. IPC library is a separate component, which consists of several system functionalities such as sending  messages between different system component.
 
 In order to perform interesting and valuable experiments, together with practitioners we identified suitable system targets, i.e.  
 %After deep study of the PM framework documentation and discussion with the practitioners, system targets were identified. 
@@ -81,9 +81,9 @@ In order to perform interesting and valuable experiments, together with practiti
 some critical components of the PM framework that have strong dependencies. Faults were injected on system targets that have strong coupling. Due to the fact that time factor can have an effect on running the experiments and to make sure that the result we got are reliable, we have repeated the experiments other two times. % at different time. For non deterministic testing, as pointed in~\cite{testselectionnondeterministic}, as long as the number of the repetition of test sequence increases, the quality of testing will also be increased. %In actual testing this number is limited due to economical and practical reasons. However, when executing the testing large number of time, the probability that all possible execution paths are executed will be reasonably high.  
 
 \subsubsection{Sending random messages}
-The communication within the system follows some specific protocols.  Sending random messages is mainly developed to test the fault tolerance ability of the protocols. The messages are categorized into three types: request, confirmation, and rejection.  Based on the designed fault tolerance feature and the possible message types in reality, we only perform sending of random request messages. We focus on three aspects of the invalid messages, the origination, the contents and the amount of sending.
+The communication within the system follows some specific protocols.  Sending random messages is mainly developed to test the fault tolerance ability of the protocols. The messages are categorized into three types: request, confirmation, and rejection.  Based on the designed fault tolerance feature and the possible message types in reality, we only perform sending of random request messages. We focus on three aspects of the invalid messages, namely the origination, the contents and the amount of sending.
 
-The system is designed to tolerate invalid request messages, one main filtering standard of invalid messages is the origination of the messages. We focused on three aspects of the message origination, the namespace name, the mailbox name and combination of namespace and mailbox names. We first created multiple mailboxes which have the same namespace name, this means that the random messages are generated from different threads but the same process. Then we created mailboxes with same mailbox names but different namespace names; this means that the random messages are generated from both different threads and processes. Lastly, we created mailboxes with both different mailbox names and namespace names. Three cases of mailbox and namespace names are shown in Table~\ref{table:4.1}.
+The system is designed to tolerate invalid request messages, one main filtering standard of invalid messages is the origination of the messages. We focused on three aspects of the message origination: the namespace name, the mailbox name and combination of namespace and mailbox names. We first created multiple mailboxes that have the same namespace name, i.e., the random messages are generated from different threads but from the same process. Then we created mailboxes with same mailbox names but different namespace names; this means that the random messages are generated from both different threads and different processes. Lastly, we created mailboxes with both different mailbox names and namespace names. Three cases of mailbox and namespace names are shown in Table~\ref{table:4.1}.
 
 \begin{table}[ht!]
 \centering
@@ -116,17 +116,17 @@ The second fault injection scenario was delaying the messages between the system
 \end{figure}
 
 Some messages sent within the PM framework have relationships with each other. Those messages usually work as a chain, as shown in Figure~\ref{chaning}. In this case, \texttt{node1} wants to send a request to \texttt{node4} for some data, however \texttt{node4} is reached by sending a message to \texttt{node2} that in turns will send a message to \texttt{node3}, that finally will deliver the request to  \texttt{node4}. 
-Once \texttt{node1} sends a message to \texttt{node2} it starts also a clock for the time-out mechanism, and 
+Once \texttt{node1} sends a message to \texttt{node2} it starts also a clock for the time-out mechanism, while 
 %and at the same time a clock starts for the time out mechanism. In order to receive the data, some messages are sent to \texttt{node2} and \texttt{node3}, but 
 \texttt{node1} only waits for a response from \texttt{node4}. Delays can happen on any of the messages sent between \texttt{node1} and \texttt{node4}. In reality, such a chain can be really long and the delay of the messages sent between each nodes can also be very unpredictable.
 
 Delaying messages in the PM framework also tests the network performance of the framework. %By delaying messages in the PM framework, the network performance of the PM framework is tested. 
-Currently the PM framework network performance test is conducted by adjusting the network bandwidth. This approach has two main drawbacks. First, the test has some hardware requirements, which makes the test more complicated. Second, adjusting the network bandwidth makes the test uncontrolled, because the delaying of the message caused by a low network bandwidth is very hard to track. The current network performance test is like a black-box testing, since what is really going on in the system during the test is not completely clear. Our test provides a white box testing for the PM framework network performance. During the message delaying, each message delaying is recorded in the log file, and then the PM framework developers at Ericsson can easily track the message delaying. A future network bandwidth benchmark has been created based on the experiences of the message delaying.
+Currently the PM framework network performance test is conducted by adjusting the network bandwidth. This approach has two main drawbacks. First, the test has some hardware requirements, which makes the test more complicated. Second, adjusting the network bandwidth makes the test uncontrolled, because the delaying of the message caused by a low network bandwidth is very hard to track. The current network performance test is like a black-box testing, since what is really going on in the system during the test is not completely clear. Our test provides a white box testing for the PM framework network performance. During the message delaying, each message delay is recorded in the log file, and thus the PM framework developers at Ericsson can easily track the message delaying. A future network bandwidth benchmark has been created based on the experiences of the message delaying.
 
 
 \section{Implementation}\label{sec:implementation}
 
-The implementation consists of two steps: tool development and tool integration. The first step mainly concerns the development of the fault injection tool using an Ericsson internal shared library called Inter Process Communication (see Section~\ref{sec:IPC}); the results of this step are some compiled C++ object files. The second step mainly concerns the work of integrating the developed tool into the automatic testing environment of the PM framework, where Shell Scripts and Ruby were used (see Section~\ref{sec:PM}). Then, this section will describe the implementation of the procedure for the two fault types we considered in the study: sending random messages (see Section~\ref{sec:sendingRandomMessages}) and delaying messages (see Section~\ref{sec:delayingMessages}).
+The implementation of \approach{} consists of two steps: tool development and tool integration. The first step mainly concerns the development of the fault injection tool using an Ericsson internal shared library called Inter Process Communication (see Section~\ref{sec:IPC}); the results of this step are some compiled C++ object files. The second step mainly concerns the work of integrating the developed tool into the automatic testing environment of the PM framework, where Shell Scripts and Ruby were used (see Section~\ref{sec:PM}). Then, this section will describe the implementation of the procedure for the two fault types we considered in the study: sending random messages (see Section~\ref{sec:sendingRandomMessages}) and delaying messages (see Section~\ref{sec:delayingMessages}).
 
 \subsection{Inter Process Communication}\label{sec:IPC}
 Inter Process Communication (IPC) is used as a communication paradigm in some components of the PM framework. Collection of information from the system is done by handling the collection of the counters and events between its components. %\cite{pmf}.
@@ -149,7 +149,7 @@ when operating in reality. % have been developed.
 The automatic testing environment is used to test the PM framework with such scenarios. The automated test scenarios will be used by the fault injection tool to verify that the PM works even in the presence of faults. 
 %\newline
 
-The \approach{} tool was integrated into the automatic testing environment using Shell Scripts, which injects random faults into the PM framework while running with the scenarios. The automatic testing environment also controls the operations of the fault injection tool like code generation, compiling and linking. The integration of \approach{} with  the automatic testing environment enhances the adoptability in industry and the usability of the tool.
+The \approach{} tool was integrated into the automatic testing environment using Shell Scripts, which inject random faults into the PM framework while running with the scenarios. The automatic testing environment also controls the operations of the fault injection tool like code generation, compiling and linking. The integration of \approach{} with  the automatic testing environment facilitates the adoption in industry and enhances the usability of the tool.
 
 %By integrating the tool into the automatic testing environment, the operation of the fault injection tool is more user-friendly and errors are more likely to be detected. 
 
@@ -224,7 +224,7 @@ The message sending of the PM framework uses IPC by linking some dynamic librari
 
 
 %At Line 13, a function called ``{\em dlsym}" took a handle of the dynamic library which contains the \texttt{\_\_itc\_send} function, this handle was returned to a function pointer called \texttt{\_\_real\_itc\_send}, which has the same parameter types as the original \texttt{\_\_itc\_send} function. By calling the \texttt{\_\_real\_itc\_send} function with the original parameters of \texttt{\_\_itc\_send}, the original \texttt{\_\_itc\_send} got called. But 
-As can be seen in Line 14,
+As it can be seen in Line 14,
 before calling \texttt{\_\_real\_itc\_send}, we let the current thread sleep for 1 second; % as shown at Line 14, 
 this means that the \texttt{\_\_itc\_send} function was always executed 1 second after being called, which implemented the delaying of message sending.
 %\newline

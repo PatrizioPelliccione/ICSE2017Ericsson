@@ -30,7 +30,7 @@ that the system meets its requirements continuously.
 %networks we run internally. %In other words, t
 %Thanks to this approach we run the randomized tests in simulated environments and actual hardware but they are not part of a production environment.
 
-In this paper we present an approach,  called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.}, that has been conceived for online testing of system robustness for distributed embedded systems. \approach{} has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. % at Ericsson AB in Gothenburg. 
+In this paper we present an approach,  called \approach{}\footnote{\approach{} is a portmanteau fusing the word Postman and Monkey. The rational is that the approach is inspired by ChaosMonkey and applies it at the level of message exchange (content and delay) - this is why Postman.}, that has been conceived for online robustness testing of distributed embedded systems. \approach{} has been developed in collaboration with a team at Ericsson AB in Gothenburg, Sweden. % at Ericsson AB in Gothenburg. 
 As said, when dealing with large scale distributed systems it is 
 very hard to anticipate the possible scenarios that can occur as caused by interactions and collaborations among the distributed and potentially independent systems. This motivates the interest for robustness %that focuses on invalid inputs or stressful environmental conditions 
 and for no-deterministic approaches that permit to go beyond specified and then known failure modes.
@@ -176,12 +176,12 @@ Distributed systems need to be increasingly resilient to different types of faul
 
 
 %\section{Problem description}
-RBS (Radio Base Station) is an integral part of the mobile data solutions delivered by Ericsson. A RBS consists of embedded components that are connected together in order to support high network availability to wide area network. A mobile network is a distributed system that consists of many RBSs. 
+RBS (Radio Base Station) is an integral part of the mobile data solutions delivered by Ericsson. RBS consists of embedded components that are connected  in order to support high network availability to a wide area network. A mobile network is a distributed system that consists of many RBSs. 
 %Due to the fact that operators as well as subscribers expect that network services support almost everything in their daily life, so high availability of network services is an essential part in daily life. 
-As long as network signalling volumes increase and operators demand more complex configurations for supporting more usage scenarios, the need for improving resilience is also increasing. The network should be flexible so that it responses to the challenge of the dramatic increasing in the network traffic and signaling created by the operators and subscribers~\cite{availability}.
+As long as network signalling volumes increase and operators demand more complex configurations for supporting more usage scenarios, the need for improving resilience is also increasing. The network should be flexible so to respond to the challenge of the dramatic increase of the network traffic and signaling created by the operators and subscribers~\cite{availability}.
 %\newline
 
-The Performance Management (PM) framework, one key component of RBS, is a framework used to count phone calls and network usages of subscribers. 
+The Performance Management (PM) framework is one key component of RBS used to count phone calls and network usages of subscribers. 
 %Similarly to other components of RBS, the PM framework is tested using traditional approaches like unit testing and functional testing. % (mock testing~\cite{Mackinnon2001}). %; in this way %such 
 %%software testing techniques are deterministic~\cite{deterministic}. 
 %Unit testing %will not catch all errors in the code, since it cannot evaluate every execution path of the program. Unit testing 

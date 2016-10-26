@@ -49,8 +49,8 @@ The faults were identified and diagnosed by observing the stack trace on the log
 Moreover \approach{} helped improving the software architecture of the system. 
 %Since the complexity of the software is dramatically increasing and systems are scaling over the time, the dependency level will also be increased. In a distributed system, there are always dependencies between the components and some dependencies are more critical than others. % on how the system should perform; t
 %This can be due to the fact that the amount of coupling between the components varies. In order to perform a particular action, the action should follow a specific sequence performed at different components that are connected with each other. Whenever a critical component has failed, the rest of the connected components can also fail. 
-After a deep study of the distributed system architecture at Ericsson, we identified some critical components, which failures can be potential due to the strong dependencies. For such dependencies we used message delaying as failure type for testing the timeout mechanism. %is a potential failure type in such dependencies. 
-Specifically, we delayed the messages between the critical components as well as tracked the system behavior through the log files. Under those circumstances, we have discovered that the system will not act as it should be when delaying the messages at a specific time. In the long run, software architecture can be improved by having lower dependencies on those critical components. By having lower coupling, components will be easier to replace, reduce the chance that a change in one component causes a problem in the other components which enhances reusability, reduce the chance that a fault in one component causes failures in other components; this  enhances robustness~\cite{software_arch}.  
+After a deep study of the distributed system architecture at Ericsson, we identified some critical components, whose failures can be potentially due to the strong dependencies. For such dependencies we used message delaying as failure type for testing the timeout mechanism. %is a potential failure type in such dependencies. 
+Specifically, we delayed the messages between the critical components as well as tracked the system behavior through the log files. Under those circumstances, we have discovered that the system will not act as it should be when delaying the messages at a specific time. In the long run, software architecture can be improved by having lower dependencies on those critical components. By having lower coupling, components will be easier to replace, the chance that a change in one component causes a problem in the other components will be reduced, which enhances maintanability and reusability, and the chance that a fault in one component causes failures in other components will also be reduced, which  enhances robustness~\cite{software_arch}.  
 
 %\subsection{Generalizability}\label{sec:generalizability}
 %
@@ -98,7 +98,7 @@ Specifically, we delayed the messages between the critical components as well as
 %\end{figure}
 
 \subsection{Challenges in adopting the fault injection approach}\label{sec:challenges}
-During this study, we have met some challenges and barriers when adopting the fault injection approach. 
+In this study, we have met some challenges and barriers to adoption of the fault injection approach. 
 %Challenges started from understanding the existing system, since the software at the RBS in Ericsson is huge and complex as well as the number of the connected components are relatively high. 
 %Furthermore, the idea of the fault injection is just available for cloud based application, but not to the embedded distributed system. So this study presents a new approach of fault injection that can be applicable to the embedded distributed system.  
 %
@@ -118,10 +118,10 @@ During this study, we have met some challenges and barriers when adopting the fa
 \noindent {\bf Unrealistic results}: Considering %Under the fact 
 that %fault injection technique is 
 we proposed a non-deterministic testing approach %that follow a randomized manner, 
-the result of running such technique can be misleading. Doing a complete randomization of the test cases might produce useless results since the generating test case can be unrealistic. In order to mitigate this limitation we made our test cases less randomized such as having time interval, specify the messages type, number of messages and delaying time. 
+the result of running such technique can be misleading. Doing a complete randomization of the test cases might produce useless results since the generated test case can be unrealistic. In order to mitigate this limitation, we made our test cases less randomized such as having time interval, specify the messages type, number of messages and delaying time. 
 For instance, when we implemented the first fault type, which was sending random messages, the system acts always differently. That was due to the fact that the injection is performed on embedded distributed systems with limited computation power. 
 %where the computation power is limited, s
-Sending a lot of random messages without any time between them was misleading. We come over this problem by inserting delays between each message sending. As a conclusion, having the time between each sending gave us a reasonable and realistic indication. 
+Sending a lot of random messages without any time between them was misleading. We overcome this problem by inserting delays between each message sending. As a conclusion, having the time between each sending gave us a reasonable and realistic indication. 
 
 \noindent {\bf Negative side effects}: When sending a lot of random messages without any time interval between them, 
  the system will probably crash since the computation power is limited on the embedded components. As stated in~\cite{Ali2014} online testing 

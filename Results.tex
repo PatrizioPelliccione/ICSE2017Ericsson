@@ -10,7 +10,7 @@ As anticipated in the introduction, we developed the approach through an iterati
 %The evaluation was done by comparing the results of running the tool and the expected ones. 
 At the end of the final iteration, we made a final validation. 
 %conclusion was built on how well the approach worked. Final evaluation of the developed approach described at the result part in details, we could see that 
-The fault injection approach has detected unexpected fault that were not seen on the previous testing techniques. As matter of fact, we could also see that this approach is able to identify the bottleneck of existing embedded distributed systems.  In the following we report detail results of the validation. Specific details are however omitted according to non disclosure agreements with the company.
+The fault injection approach has detected unexpected faults that were not found by previously used testing techniques. As matter of fact, we could also see that this approach is able to identify the bottleneck of existing embedded distributed systems.  In the following we report the detailed results of the validation. Specific information is however omitted according to a non disclosure agreement with the company.
 
 
 \subsection{Sending random messages}
@@ -38,7 +38,7 @@ The fault injection approach has detected unexpected fault that were not seen on
 %The message contents inside the system varied dramatically: some contents describe the actual payload, some describe the protocol version, some specify the size of the messages. The fields of the messages were also different from each other. Based on the above characteristics, we constructed the random messages from two different aspects, random fields and random contents. 
 %
 %The amount of random messages would affect the filtering ability of the protocols. For instance, by sending one random message, the system is able to filter it, but by sending 1000 random messages, the system might only be able to filter 500 of them. With a huge amount of random messages, the CPU load of the systems would be high. Therefore, t
-The validation related to random messages wants to give an answer to this question: 
+The validation related to injecting random messages aims to give an answer to this question: 
 
  \begin{itemize}
  \item {\em To what extent is the system able to filter invalid messages?} 
@@ -48,7 +48,7 @@ The validation related to random messages wants to give an answer to this questi
  To answer the above question, we sent random messages in two ways, synchronously and asynchronously.
 Filtering of invalid messages is conducted by checking the properties of the messages. Such checking consumes time and processing power. So the filtering ability can also be affected by the frequency of the random messages. To test the filtering ability of the PM framework in terms of random message frequencies, the random messages are sent to the PM framework with different frequencies. This was implemented by giving different time intervals between each message sending. 
 
-The number of invalid messages that need to be generated in order to let the system behaves differently from what expected varies depending on the time interval between the messages as well as the time when the messages are triggered. Sending a lot of invalid messages without having any time interval between messages leads the system to not behave as expected. This happens due to the fact that the computation power of the embedded components is limited, the number of the messages are large and there is not enough time between message sending. Thus, the system will not be able to recognize if the message is valid or not. 
+The number of invalid messages that need to be generated in order to let the system behaves differently from what expected varies depending on the time interval between the messages as well as the time when the messages are triggered. Sending a lot of invalid messages without having any time interval between messages leads the system to behave differently than expected. This happens due to the fact that the computation power of the embedded components is limited, the number of the messages are large and there is not enough time between message sending. Thus, the system will not be able to recognize if a message is valid or not. 
 
 \begin{figure}[h!]
 \centering
@@ -59,7 +59,8 @@ The number of invalid messages that need to be generated in order to let the sys
 Figure~\ref{testingchain} shows the test chains of the PM framework. One sample test chain from the left to right can be read like this: test case1, with same fields but different contents, send the random messages synchronously, the time interval between each random message is 100ms. In order to perform the test randomly, we created different C++ classes to represent different variables in the chain. When the test starts, variable objects of the test chains are initialized and connected randomly. There are four variable classes, which are Cases, DataType (fields or contents), Concurrency (synchronously or asynchronously), and Intervals.
 
 By performing the random message sending to the PM framework, we are able to test the PM framework according to two different aspects. The first aspect is the message type, which tested the PM framework at functional level. The second aspect is the message amount, which tested the PM framework at the performance level. The module test of the PM framework has covered almost all the invalid message sending, but the test is not random and the messages are sent one at a time. Our test sends random messages randomly and messages are also combined randomly. This helps the PM framework developers at Ericsson finding many corner cases that were not covered before. %which the module tested does not cover. 
-The random messages sending also plays a performance test role. By adjusting the number of random messages and the time interval between the random messages sent, a performance threshold of the PM framework was found. Based on the demand in reality, this test helped the PM framework developers finding secure hardware requirements, which provide optimal and economic solutions for Ericsson.
+
+Sending random messages also plays a performance test role. By adjusting the number of random messages and the time interval between the random messages sent, a performance threshold of the PM framework was found. Based on the demand in reality, this test helped the PM framework developers finding secure hardware requirements, which provide optimal and economic solutions for Ericsson.
 
 \begin{figure}[h!]
 \centering
@@ -67,7 +68,7 @@ The random messages sending also plays a performance test role. By adjusting the
 \caption{Sending invalid messages asynchronously \label{asynseding}}
 \end{figure}
 
-Figure~\ref{asynseding} shows a snapshot of sending random messages to one node in the PM framework. The response time of messages sent to this node should be less than 200 milliseconds, if the there's no response after 200 milliseconds, the sender will timeout. Figure~\ref{synchsending} shows a snapshot of sending random messages synchronously with different time intervals between each sending which will not trigger timeout. Figure~\ref{asynseding} shows that the node can maximally receive 1200 random messages at the same time. Figure~\ref{synchsending} shows that in order to send 6000 messages, each message sending should have at least an interval of 80 milliseconds. These snapshots have been saved as benchmarks for improving the performance of the nodes.
+Figure~\ref{asynseding} shows a curve of sending random messages to one node in the PM framework. The response time of messages sent to this node should be less than 200 milliseconds. If no response is received after 200 milliseconds, the sender will time out. Figure~\ref{synchsending} shows a snapshot of sending random messages synchronously with different time intervals between each sending, which will not trigger timeout. Figure~\ref{asynseding} shows that the node can maximally receive 1200 random messages at the same time. Figure~\ref{synchsending} shows that in order to send 6000 messages, each message sending should have at least an interval of 80 milliseconds. These snapshots have been saved as benchmarks for improving the performance of the nodes.
 
 
 \begin{figure}[hh!]
@@ -92,7 +93,7 @@ Thanks to this tests we identified some errors that where not identified by trad
 %Delaying messages in the PM framework also tests the network performance of the framework. %By delaying messages in the PM framework, the network performance of the PM framework is tested. 
 %Currently the PM framework network performance test is conducted by adjusting the network bandwidth. This approach has two main drawbacks. First, the test has some hardware requirements, which makes the test more complicated. Second, adjusting the network bandwidth makes the test uncontrolled, because the delaying of the message caused by a low network bandwidth is very hard to track. The current network performance test is like a black-box testing, since what is really going on in the system during the test is not peered. Our test provides a white box testing for the PM framework network performance. During the message delaying, each message delaying is recorded in the log file, and then the PM framework developers at Ericsson can easily track the message delaying. A future network bandwidth benchmark has been created based on the experiences of the message delaying.
 
-In this case the validation wants to give an answer to the following question: 
+In this case the validation aims to give an answer to the following question: 
 
  \begin{itemize}
  \item {\em Is delaying messages an effective strategy to discover faults?} 
@@ -108,7 +109,7 @@ In order to provide an answer to this question, we operated as follows.
 Figure~\ref{bendelay} shows the time of delaying in milliseconds and the corresponding network bandwidth in Mbit/s. The nodes use wireless communication and Ericsson uses the international standard of Wireless 802.11n~\cite{Wireless}, whose normal bandwidth is 600 Mbit/s. This benchmark is used to adjust the %when the performance test by adjusting 
 network bandwidth when the performance is performing abnormally; the corresponding delaying will be run to check which process is responding slowly.
 
-Randomized delays detect misconfigured timeout handling. This was not identified by manual testing since the testers made the same wrong assumptions of the developers, %produced code, %manual test case had the same mistake of the production code, 
+Randomized delays detect misconfigured time out handling. This was not identified by manual testing since the testers made the same wrong assumptions of the developers, %produced code, %manual test case had the same mistake of the production code, 
 and consequently the defect was missed. This testifies the potential existence of human bias in manual testing.
 
 
